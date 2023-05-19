@@ -22,3 +22,5 @@ exports.createProject = async (requestBody) => {
     });
     return await project.save();
 };
+
+exports.updateProject = async () => {};
