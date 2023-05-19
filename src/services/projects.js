@@ -7,7 +7,6 @@ exports.getProjects =async () => {
 
 exports.getProjectById = async (id) => {
     let project = await Project.findById(id).lean().exec();
-    console.log(project);
     return project;
 };
 
@@ -23,4 +22,10 @@ exports.createProject = async (requestBody) => {
     return await project.save();
 };
 
-exports.updateProject = async () => {};
+exports.updateProject = async (id, projectData) => {
+    return await Project.findByIdAndUpdate(id, projectData, {
+      new: true,
+    })
+      .lean()
+      .exec();
+  };
